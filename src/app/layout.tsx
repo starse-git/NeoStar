@@ -7,6 +7,10 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "NeoStar - Welcome",
   description: "A modern web application built with Next.js, TypeScript, and Tailwind CSS",
+  icons: {
+    icon: '/pc/logo.svg',
+    apple: '/pc/logo.svg',
+  },
 };
 
 export default function RootLayout({
