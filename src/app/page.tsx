@@ -4,11 +4,11 @@ import { Button } from "@/components/ui/button";
 import { ChevronRight, Mail } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import MobileMenu from "@/components/MobileMenu";
-import KizunaModal from "@/components/KizunaModal";
 import { useState } from "react";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import KizunaModal from "@/components/KizunaModal";
 import Hero from "@public/pc/FV01.png";
-import logo from "@public/pc/logo.svg";
 import AboutBg from "@public/pc/Top_AboutUs_bg.png";
 import Service from "@public/pc/Top_Service_bg.png";
 import Contact from "@public/pc/Top_Contact_bg.png";
@@ -16,9 +16,6 @@ import Contact from "@public/pc/Top_Contact_bg.png";
 export default function Home() {
   const [isKizunaModalOpen, setIsKizunaModalOpen] = useState(false);
 
-  const getYear = () => {
-     return new Date().getFullYear();
-  }
   const news = [
     {
       date: "2026.05.05",
@@ -72,48 +69,7 @@ export default function Home() {
         </div>
 
         {/* Navigation - Fixed to Top */}
-        <nav className="fixed top-0 left-0 right-0 z-100 w-full ">
-          <div className="container mx-auto px-6 py-4">
-            <div className="flex items-center justify-between">
-              <Link href="/" className="flex items-center space-x-2">
-                <Image src={logo} alt="NeoStar Logo" className="h-12 w-auto" />
-              </Link>
-              {/* Desktop Menu */}
-              <div className="hidden md:flex items-center space-x-8">
-                <Link
-                  href="#about"
-                  className="text-white hover:text-orange-400 transition"
-                >
-                  ABOUT US
-                </Link>
-                <Link
-                  href="#service"
-                  className="text-white hover:text-orange-400 transition"
-                >
-                  SERVICE
-                </Link>
-                <Link
-                  href="#news"
-                  className="text-white hover:text-orange-400 transition"
-                >
-                  NEWS
-                </Link>
-                <Link
-                  href="#recruit"
-                  className="text-white hover:text-orange-400 transition"
-                >
-                  RECRUIT
-                </Link>
-                <Button className="bg-gradient-to-b from-orange-400 to-orange-600 hover:bg-orange-600 rounded-full px-6 text-white">
-                  <Mail className="w-4 h-4 mr-2" />
-                  CONTACT
-                </Button>
-              </div>
-              {/* Mobile Menu */}
-              <MobileMenu />
-            </div>
-          </div>
-        </nav>
+        <Navigation transparent={true} linkColor="text-white" />
 
         {/* Hero Content */}
         <div className="container mx-auto px-6 relative z-10 text-white mt-60">
@@ -175,11 +131,13 @@ export default function Home() {
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4  mb-8 justify-items-center md:justify-items-start ">
-              <Button className="bg-gradient-to-b flex justify-between from-orange-400 to-orange-600 hover:bg-orange-600 rounded-full py-6 text-base w-full md:w-64">
-                <span></span>
-                <span>VIEW MORE</span>
-                <ChevronRight className="ml-2 w-4 h-4" />
-              </Button>
+              <Link href="/aboutus">
+                <Button className="bg-gradient-to-b flex justify-between from-orange-400 to-orange-600 hover:bg-orange-600 rounded-full py-6 text-base w-full md:w-64">
+                  <span></span>
+                  <span>VIEW MORE</span>
+                  <ChevronRight className="ml-2 w-4 h-4" />
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -313,46 +271,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-white py-12 border-t">
-        <div className="container mx-auto px-6">
-          <div className="flex items-center justify-between mb-8">
-            <Link href="/" className="flex items-center space-x-2">
-              <Image
-                src={logo}
-                alt="NeoStar Logo"
-                width={120}
-                height={40}
-                className="h-16 w-auto"
-              />
-            </Link>
-          </div>
-
-          <div className="flex md:flex-row flex-col gap-8 mb-8 text-lg md:text-sm">
-            <Link href="#about" className=" hover:text-orange-500 font-bold ">
-              企業理念
-            </Link>
-            <Link href="#service" className=" hover:text-orange-500 font-bold">
-              サービス紹介
-            </Link>
-            <Link href="#news" className=" hover:text-orange-500 font-bold">
-              ニュース
-            </Link>
-            <Link href="#recruit" className=" hover:text-orange-500 font-bold">
-              採用情報
-            </Link>
-            <Link href="#contact" className=" hover:text-orange-500 font-bold">
-              お問い合わせ
-            </Link>
-          </div>
-
-          <div className=" text-sm text-gray-500 pt-8 text-end">
-            <p>情報セキュリティ</p>
-            <p className="mt-2 font-light">
-              Copyright©{getYear()} NeoStar株式会社.All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 }

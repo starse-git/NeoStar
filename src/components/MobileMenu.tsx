@@ -39,7 +39,7 @@ export default function MobileMenu() {
       >
         <nav className="flex flex-col p-6 space-y-6">
           <Link
-            href="#about"
+            href="/aboutus"
             className="text-white hover:text-orange-500 transition text-lg font-medium"
             onClick={closeMenu}
           >
